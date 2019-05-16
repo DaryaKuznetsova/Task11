@@ -10,14 +10,71 @@ namespace Task11
     {
         static void Main(string[] args)
         {
-            string s = "10110";
-            s = CreateLine(s);
-            Console.WriteLine(s);
-            s = Decode(s);
-            Console.WriteLine(s);
+            char [] arr=CreateAlf();
+            char [] str = CreateString(arr);
+           
+            //s = CreateLine(s);
+            //Console.WriteLine(s);
+            //s = Decode(s);
+            //Console.WriteLine(s);
         }
 
-        static string  CreateLine(string str)
+        static char ReadAnswer()
+        {
+            char a = ' ';
+            bool ok = false;
+            do
+            {
+                try
+                {
+                    a = Convert.ToChar(Console.ReadLine());
+                    if (a > 0)
+                        ok = true;
+
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Пожалуйста, введите один символ.");
+                    ok = false;
+                }
+            } while (!ok);
+            return a;
+        }
+
+
+        static char[] CreateAlf()
+        {
+            char[] arr = new char[2];
+            bool ok = false;
+            do
+            {
+                Console.WriteLine("Введите кодирующий алфавит (2 символа):");
+                Console.Write("Первый символ "); arr[0] = ReadAnswer();
+                Console.Write("Второй символ "); arr[0] = ReadAnswer();
+                if (arr[0] != arr[1]) ok = true;
+                else
+                {
+                    Console.WriteLine("Элементы алфавита должны отличаться, введите еще раз.");
+                }
+            } while (!ok);
+            return arr;
+        }
+
+        static char[] CreateString(char [] alf)
+        {
+            Console.Write("Введите строку:"); string res = Console.ReadLine();
+            char []arr = res.ToCharArray();
+            bool ok = false;
+            do
+            {
+                ok = true;
+                for (int i = 0; i < arr.Length; i++)
+                    if (arr[i] != alf[0] && arr[i] != alf[1]) ok = false;
+            } while (!ok);
+            return arr;
+        }
+
+        static string  Encode(string str, char[] alf)
         {
             string result = "";
             Array arr = str.ToCharArray();
