@@ -72,11 +72,11 @@ namespace Task11
             bool ok = true;
             do
             {
-                Console.Write("Введите строку:"); string res = Console.ReadLine();
+                Console.Write("Введите строку:"); string res = Console.ReadLine(); 
                 arr = res.ToCharArray();
                 for (int i = 0; i < arr.Length; i++)
                 {
-                    if (!ReadChar(alf, arr[i]))
+                    if (!ReadChar(alf, arr[i])) // If all the symbols in the string fit the alphabet
                     {
                         ok = false;
                         break;
@@ -114,7 +114,7 @@ namespace Task11
             result += str[0];
             string temp =result;
             string another;
-            if (temp == Convert.ToString(alf[0])) another = Convert.ToString(alf[1]);
+            if (temp == Convert.ToString(alf[0])) another = Convert.ToString(alf[1]); // Chose the symbol from the alphabet to be the next
             else another = alf[0].ToString();
             for (int i = 1; i < str.Length; i++)
                 if (str[i] == alf[1])
